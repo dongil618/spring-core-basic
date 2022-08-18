@@ -19,4 +19,9 @@ public class MemberServiceImpl implements MemberService{
         System.out.println("MemberServiceImpl의 findMember 메소드 실행");
         return memberRepository.findById(memberId);
     }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
 }
