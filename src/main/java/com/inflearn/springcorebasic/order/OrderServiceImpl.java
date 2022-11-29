@@ -6,6 +6,7 @@ import com.inflearn.springcorebasic.discount.RateDiscountPolicy;
 import com.inflearn.springcorebasic.member.Member;
 import com.inflearn.springcorebasic.member.MemberRepository;
 import com.inflearn.springcorebasic.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderServiceImpl implements OrderService{
 
@@ -14,6 +15,7 @@ public class OrderServiceImpl implements OrderService{
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();    해당 코드는 DIP 위반  => 생성자 주입으로 해결
     private final DiscountPolicy discountPolicy;
 
+    @Autowired // 지금처럼 생성자가 1개면 생략가능
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
