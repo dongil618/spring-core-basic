@@ -6,18 +6,18 @@ import com.inflearn.springcorebasic.discount.RateDiscountPolicy;
 import com.inflearn.springcorebasic.member.Member;
 import com.inflearn.springcorebasic.member.MemberRepository;
 import com.inflearn.springcorebasic.member.MemoryMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderServiceImpl implements OrderService{
 
-    // setter 주입과 마찬가지로 final키워드와 같이 사용 못함.
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 //   private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();    해당 코드는 DIP 위반  => 생성자 주입으로 해결
-    @Autowired
-    private DiscountPolicy discountPolicy;
+    private final DiscountPolicy discountPolicy;
 
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
