@@ -10,13 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class OrderServiceImpl implements OrderService{
 
-    // setter 주입에서는 final이 빠져야함 => why? => final 키워드는 1번만 초기화할 때 사용 => 애초에 setter는 프로그램이 작동 되면서
-    // 값을 세팅하는 역할을 하기 때문에 final 키워드와 같이 사용하지 못하는 것.
+    // setter 주입과 마찬가지로 final키워드와 같이 사용 못함.
+    @Autowired
     private MemberRepository memberRepository;
 //   private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();    해당 코드는 DIP 위반  => 생성자 주입으로 해결
+    @Autowired
     private DiscountPolicy discountPolicy;
-    
+
 
     @Autowired
     void setMemberRepository(MemberRepository memberRepository) {
