@@ -19,16 +19,6 @@ public class OrderServiceImpl implements OrderService{
     private DiscountPolicy discountPolicy;
 
 
-    @Autowired
-    void setMemberRepository(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
-
-    @Autowired
-    void setDiscountPolicy(DiscountPolicy discountPolicy) {
-        this.discountPolicy = discountPolicy;
-    }
-
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
         Member member = memberRepository.findById(memberId);
